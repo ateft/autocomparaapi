@@ -19,7 +19,6 @@ import java.util.List;
 
 @RestController
 @Api(value = "marcasService", description = "Marcas services")
-
 public class MarcasController {
 
     @Autowired
