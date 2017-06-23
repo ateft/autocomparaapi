@@ -1,12 +1,11 @@
 package mx.santander.autocompara.controllers;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import io.swagger.annotations.Api;
 import mx.santander.autocompara.models.Marca;
@@ -17,14 +16,18 @@ import mx.santander.autocompara.services.MarcasService;
  */
 
 @RestController
+@CrossOrigin(maxAge = 3600)
 @Api(value = "marcasService", description = "Marcas services")
 public class MarcasController {
+
+    private static final Logger LOGGER = Logger.getLogger(MarcasController.class.getName());
 
     @Autowired
     private MarcasService marcasService;
 
     @RequestMapping(value = "/marcas", method = RequestMethod.GET)
     public List<Marca> getMarcas(){
+        LOGGER.log(Level.INFO, "Calling '/marcas' service");
         return marcasService.getMarcas();
     }
 
@@ -32,5 +35,7 @@ public class MarcasController {
     public Marca getMarcaById(@PathVariable Long id){
         return marcasService.getMarcaById(id);
     }
+
+
 
 }

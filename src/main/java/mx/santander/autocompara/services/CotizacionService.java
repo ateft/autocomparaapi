@@ -7,5 +7,5 @@ import mx.santander.autocompara.models.CotizacionRequest;
 
 public interface CotizacionService {
 	
-	public List<Cotizacion> getCotizaciones(CotizacionRequest cotizacionRequest);
+	public List<Cotizacion> getCotizaciones();
 }
